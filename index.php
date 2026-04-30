@@ -4,20 +4,24 @@
 <html>
 <head>
     <title>Usuarios</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>Lista de Usuarios</h2>
-<a href="crear.php">Crear Usuario</a>
+<div class="container">
 
-<table border="1">
-    <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Cédula</th>
-        <th>Teléfono</th>
-        <th>Acciones</th>
-    </tr>
+<h2>📋 Lista de Usuarios</h2>
+
+<a class="btn btn-create" href="crear.php">➕ Crear Usuario</a>
+
+<table>
+<tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Cédula</th>
+    <th>Teléfono</th>
+    <th>Acciones</th>
+</tr>
 
 <?php
 $result = $conn->query("SELECT * FROM usuarios");
@@ -29,14 +33,16 @@ while($row = $result->fetch_assoc()) {
         <td>{$row['cedula']}</td>
         <td>{$row['telefono']}</td>
         <td>
-            <a href='editar.php?id={$row['id']}'>Editar</a>
-            <a href='eliminar.php?id={$row['id']}'>Eliminar</a>
+            <a class='btn btn-edit' href='editar.php?id={$row['id']}'>✏️ Editar</a>
+            <a class='btn btn-delete' href='eliminar.php?id={$row['id']}'>🗑 Eliminar</a>
         </td>
     </tr>";
 }
 ?>
 
 </table>
+
+</div>
 
 </body>
 </html>
